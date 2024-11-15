@@ -4,8 +4,8 @@ int main(){
     int *ptr = &i;
     int **pptr = &ptr;
 
-    printf("%d\n",i);
-    printf("%p\n",ptr);
-    printf("%p\n",pptr);
+    printf("%d\n",i);  //value of i
+    printf("%p\n",ptr); //address of i
+    printf("%p\n",pptr); //address of ptr
     return 0;
 }
