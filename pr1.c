@@ -13,12 +13,12 @@ int main(){
     strcpy(calendar[1].name,"tuesday");
     calendar[1].date=2;
     strcpy(calendar[1].activity,"dance");
-    strcpy(calendar[2].name,"wednsday");
+    strcpy(calendar[2].name,"wednesday");
     calendar[2].date=3;
     strcpy(calendar[2].activity,"football");
     strcpy(calendar[3].name,"thursday");
     calendar[3].date=4;
-    strcpy(calendar[3].activity,"tution");
+    strcpy(calendar[3].activity,"tuition");
     strcpy(calendar[4].name,"friday");
     calendar[4].date=5;
     strcpy(calendar[4].activity,"workout");
@@ -27,8 +27,8 @@ int main(){
     strcpy(calendar[5].activity,"rest");
     strcpy(calendar[6].name,"sunday");
     calendar[6].date=7;
-    strcpy(calendar[6].activity,"collage");
-    printf("Callender for the week:\n");
+    strcpy(calendar[6].activity,"college");
+    printf("Calendar for the week:\n");
     for(int i=0;i<7;i++){
         printf("day: %s\tDate: %d\tactivity: %s\n",calendar[i].name, calendar[i].date,calendar[i].activity);
     }
