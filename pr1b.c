@@ -1,16 +1,14 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-struct Day
-{
+struct Day{
 char *name;
 char *date;
 char *Activity;
 };
 void create(struct Day calendar[7])
 {
-for (int i = 0; i < 7; i++)
-{
+for (int i = 0; i < 7; i++){
 calendar[i].name = (char *)malloc(20 * sizeof(char));
 calendar[i].date = (char *)malloc(20 * sizeof(char));
 calendar[i].Activity = (char *)malloc(20 * sizeof(char));
