@@ -1,18 +1,14 @@
 #include <stdio.h>
 #include <stdlib.h>
 #define MAX_SIZE 100
-
 int top = -1;
 int data[MAX_SIZE];
-
 int isEmpty() {
     return top == -1;
 }
-
 int isFull() {
     return top == MAX_SIZE - 1;
 }
-
 void push(int element) {
     if (isFull()) {
         printf("Stack overflow!\n");
@@ -21,7 +17,6 @@ void push(int element) {
     top++;
     data[top] = element;
 }
-
 int pop() {
     if (isEmpty()) {
         printf("Stack underflow!\n");
@@ -31,7 +26,6 @@ int pop() {
     top--;
     return poppedElement;
 }
-
 void display() {
     if (isEmpty()) {
         printf("Stack is empty.\n");
@@ -43,7 +37,6 @@ void display() {
     }
     printf("\n");
 }
-
 void palindrome() {
     int tempTop = top;
     int i;
@@ -55,7 +48,6 @@ void palindrome() {
     }
     printf("\nIt is a Palindrome\n");
 }
-
 int main() {
     int choice, element;
     while (1) {
