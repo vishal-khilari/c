@@ -1,20 +1,24 @@
-#include<stdio.h>
-#include<stdlib.h>
+#include <stdio.h>
+#include <stdlib.h>
 #define MAX 5
+
 char circular_queue[MAX];
 int front = -1, rear = -1;
+
 int isEmpty(){
 if (front == -1 && rear == -1)
 return 1;
 else
 return 0;
 }
+
 int isFull(){
 if ((rear + 1) % MAX == front)
 return 1;
 else
 return 0;
 }
+
 void insertElement(char element){
 if (isFull()){
 printf("Circular Queue Overflow\n");
@@ -28,6 +32,7 @@ rear = (rear + 1) % MAX;
 }
 circular_queue[rear] = element;
 }
+
 void deleteElement(){
 if (isEmpty()){
 printf("Circular Queue Underflow\n");
@@ -41,6 +46,7 @@ printf("Deleted element is %d",circular_queue[front]);
 front = (front + 1) % MAX;
 }
 }
+
 void display(){
 int i;
 if (isEmpty()){
@@ -56,6 +62,7 @@ i = (i + 1) % MAX;
 while (i != (rear + 1) % MAX);
 printf("\n");
 }
+
 int main(){
 int choice;
 char element;
