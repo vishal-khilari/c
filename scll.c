@@ -1,12 +1,14 @@
 #include<stdio.h>
 #include<math.h>
-#include<malloc.h>
+#include<stdlib.h>
+
 struct node{
-int co,ex,ey,ez;
-int flag;
+int co,ex,ey,ez,flag;
 struct node *link;
 };
+
 typedef struct node* poly;
+
 poly attach(int c, int x, int y, int z, poly head){
 poly temp, cur;
 temp = (struct node *)malloc(sizeof(struct node));
@@ -14,6 +16,7 @@ temp->co = c;
 temp->ex = x;
 temp->ey = y;
 temp->ez = z;
+////////////////////////////////////////
 cur = head;
 while(cur->link!= head)
 cur = cur->link;
@@ -21,9 +24,9 @@ cur->link = temp;
 temp->link = head;
 return head;
 }
+
 poly read(poly head){
-int ch=1;
-int cf,x,y,z;
+int ch=1,cf,x,y,z;
 while(ch!=0){
 printf("Enter Coeff and 3 exponents: ");
 scanf("%d%d%d%d",&cf,&x,&y,&z);
@@ -33,6 +36,7 @@ scanf("%d", &ch);
 }
 return head;
 }
+
 void display(poly head){
 poly temp;
 if(head->link == head){
@@ -47,7 +51,9 @@ else
 printf("+%d x^%d y^%d z^%d",temp->co,temp->ex,temp->ey,temp->ez);
 temp = temp->link;
 }
+////////////////////////////////////
 }
+
 poly add(poly first, poly sec, poly res){
 poly a, b;
 int x1,x2,y1,y2,z1,z2,cf1,cf2,cf;
@@ -63,7 +69,7 @@ x2=b->ex;
 y2=b->ey;
 z2=b->ez;
 cf2=b->co;
-if(x1==x2 && y1==y2 && z1==z2)
+if(x1==x2 && y1==y2 && z1==z2) // compare the exponent component
 break;
 b=b->link;
 }
@@ -74,33 +80,40 @@ if(cf!=0)
 res=attach(cf,x1,y1,z1,res);
 a=a->link;
 }
-else{
+else
+{
 res=attach(cf1,x1,y1,z1,res);
 a=a->link;
 }
 }
+
+
 b=sec->link;
-while(b!=sec){
+while(b!=sec)
+{
 if(b->flag==0)
 res=attach(b->co,b->ex,b->ey,b->ez,res);
 b=b->link;
 }
 return res;
 }
-void evaluate(poly head){
+void evaluate(poly head)
+{
 poly h1;
 int x, y, z;
 int result=0;
 h1=head->link;
 printf("\nEnter values of x, y and z to evaluate:\n");
 scanf("%d%d%d", &x, &y, &z);
-while(h1!= head){
+while(h1!= head)
+{
 result = result +h1->co*pow(x,h1->ex)*pow(y,h1->ey)*pow(z,h1->ez);
 h1=h1->link;
 }
 printf("\nPolynomial result is: %d", result);
 }
-void main(){
+void main()
+{
 int ch;
 poly eval,first,sec,res;
 first = (struct node *)malloc(sizeof(struct node));
@@ -114,7 +127,8 @@ eval->link = eval;
 printf("\n1.Evaluate polynomial\n2.Add 2 polynomials\n3.Exit\n");
 printf("Enter your choice:");
 scanf("%d",&ch);
-switch(ch){
+switch(ch)
+{
 case 1: printf("Enter the polynomial\n");
 eval = read(eval);
 evaluate(eval);

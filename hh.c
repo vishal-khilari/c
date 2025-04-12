@@ -1,42 +1,37 @@
 #include<stdio.h>
-#include <string.h>
-char str[50], pat[20], rep[20], res[50];
-int c = 0, m = 0, i = 0, j = 0, k, flag = 0;
-void stringmatch(){
-while (str[c] != '\0'){
-if (str[m] == pat[i]){
-    i++;
-    m++;
-    if (pat[i] == '\0'){
-    flag = 1;
-        for (k = 0; rep[k] != '\0'; k++, j++){
-        res[j] = rep[k];
-        }
-        i = 0;
-        c = m;
-    }
-}
-else{
-res[j] = str[c];
-j++;
-c++;
-m = c;
-i = 0;
+float compute(char symbol, float op1, float op2)
+{
+switch (symbol)
+{
+case '+': return op1 + op2;
+case '-': return op1 - op2;
+case '*': return op1 * op2;
+case '/': return op1 / op2;
+case '$':
+case '^': return pow(op1,op2);
 }
 }
-res[j] = '\0';
-}
-void main(){
-printf("Enter the main string:");
-gets(str);
-printf("\nEnter the pat string:");
-gets(pat);
-printf("\nEnter the replace string:");
-gets(rep);
-printf("\nThe string before pattern match is:\n %s", str);
-stringmatch();
-if (flag == 1)
-printf("\nThe string after pattern match and replace is: \n %s ", res);
+void main()
+{
+float s[20], res, op1, op2;
+int top, i;
+char postfix[20], symbol;
+printf("\nEnter the postfix expression:\n");
+scanf ("%s", postfix);
+top=-1;
+for (i=0; i<strlen(postfix) ;i++)
+{
+symbol = postfix[i];
+if(isdigit(symbol))
+s[++top]=symbol - '0';
 else
-printf("\nPattern string is not found");
+{
+op2 = s[top--];
+op1 = s[top--];
+res = compute(symbol, op1, op2);
+s[++top] = res;
+}
+}
+res = s[top--];
+printf("\nThe result is : %f\n", res);
 }
